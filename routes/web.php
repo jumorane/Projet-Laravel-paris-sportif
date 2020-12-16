@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 
@@ -19,3 +20,6 @@ Route::get('/', function () {
 });
 
 Route::resource('matchs', 'MatchController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
