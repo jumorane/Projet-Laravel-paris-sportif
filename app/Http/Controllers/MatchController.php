@@ -18,7 +18,7 @@ class MatchController extends Controller
 
     public function create()
     {
-        return view('match.create');
+        return view('matchs.create');
         
     }
 
@@ -30,19 +30,19 @@ class MatchController extends Controller
             'equipe'=>'required'
         ]);
         Match::create($request);
-        return redirect()->route('match.index');
+        return redirect()->route('matchs.index');
     }
 
   
     public function show(Match $match)
     {
-        return view('match.show',compact('match'));
+        return view('matchs.show',compact('match'));
     }
 
   
     public function edit(Match $match)
     {
-        return view('match.edit',compact('match'));
+        return view('matchs.edit',compact('match'));
 
     }
 
@@ -54,14 +54,14 @@ class MatchController extends Controller
             'equipe'=>'required',
         ]);
         $match->update($request);
-        return redirect()->route('match.show');
+        return redirect()->route('matchs.show', $match->id);
     }
 
 
     public function destroy(Match $match)
     {
         $match->delete();
-        return redirect()->route('match.index',compact('match'));
+        return redirect()->route('matchs.index');
     }
 
 
