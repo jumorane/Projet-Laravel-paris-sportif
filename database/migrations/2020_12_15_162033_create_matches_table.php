@@ -17,7 +17,7 @@ class CreateMatchesTable extends Migration
             $table->id();
             $table->string('nom');
             $table->integer('cote');
-            $table->string('pays');
+            $table->string('equipe');
             $table->timestamps();
         });
     }
