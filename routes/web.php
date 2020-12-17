@@ -15,11 +15,12 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// Route matchs
 Route::resource('matchs', 'MatchController');
-Auth::routes();
 
+//Route authentification
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Route Utilisateurs
+Route::resource('/users', 'UserController');
