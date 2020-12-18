@@ -19,6 +19,7 @@
             <input type="text" class="form-control" id="formGroupExampleInput" name="equipe" placeholder="Inserez le pays">
         </div>
         <button type="submit" class="btn btn-primary">Creer</button>
+          <a class="btn btn-primary"href="http://projet-laravel-paris-sportif.test/home">Retour à l'accueil</a>
 
     </form>
 

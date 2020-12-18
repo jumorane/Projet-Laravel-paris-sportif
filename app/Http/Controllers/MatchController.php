@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Match;
 use Illuminate\Http\Request;
 
+
 class MatchController extends Controller
 {
     public function __construct()
     {
         $this->middleware('admin')->except(['index', 'show']);
+        $this->middleware('auth')->except(['index']);
 
     }
    
@@ -17,6 +19,10 @@ class MatchController extends Controller
     {
         $matchs=Match::all();
         return view('matchs.index',compact('matchs'));
+        
+        $matchs = Match::inRandomOrder()->take(6)->get();
+       
+        return view('matchs.index')->with('matchs' , $matchs);
 
     }
 

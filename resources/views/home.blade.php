@@ -14,7 +14,10 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Vous êtes à présent connecté') }}
+                    <button> <a href="http://projet-laravel-paris-sportif.test/matchs/create">Créer un match</a></button>
+                    <button><a href="http://projet-laravel-paris-sportif.test/matchs">Liste des matchs</a></button>
+
                 </div>
             </div>
         </div>

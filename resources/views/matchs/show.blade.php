@@ -7,6 +7,7 @@
     {{ $match->cote }}
     {{ $match->equipe }}
     <a href=" {{route("matchs.edit", $match->id)}} " class="btn btn-info">Modifier</a>
+    <a href=" {{route("matchs.edit", $match->cote)}} " class="btn btn-info">Parier</a>
     <form action=" {{route('matchs.destroy', $match->id)}} " method="post">
         @csrf
         @method("delete")

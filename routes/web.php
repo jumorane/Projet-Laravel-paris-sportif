@@ -21,6 +21,10 @@ Route::resource('matchs', 'MatchController');
 //Route authentification
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 //Route Utilisateurs
 Route::resource('/users', 'UserController');
+
+
+
