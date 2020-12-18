@@ -17,12 +17,10 @@ class MatchController extends Controller
    
     public function index()
     {
-        $matchs=Match::all();
-        return view('matchs.index',compact('matchs'));
         
-        $matchs = Match::inRandomOrder()->take(6)->get();
-       
+        $matchs = Match::inRandomOrder()->take(6)->paginate(4);
         return view('matchs.index')->with('matchs' , $matchs);
+
 
     }
 
