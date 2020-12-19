@@ -249,13 +249,16 @@
                             <div class="mb-1 text-muted">{{$match->created_at->format('d/m/Y')}} </div>
                             <p class="lead my-3"> {{$match->equipe}} gagnant: </p>
                             <button class="btn btn-info"> {{$match->cote}} </button>
+                            <form action="#" method="POST">
+                                <button type="submit" class="btn btn-danger"> Miser</button>
+                            </form>
+                                
                            
                             <a href=" {{route('matchs.show', $match->id)}} " class="stretched-link">En savoir plus</a>
                         </div>
                         <div class="col-auto d-none d-lg-block">
-                            <img src="" alt
-                            </svg>
-
+                            <img src=" {{ $match->image}} " alt >
+                          
                         </div>
                     </div>
                 </div>
