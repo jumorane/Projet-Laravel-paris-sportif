@@ -26,5 +26,8 @@ Route::get('/', 'HomeController@index')->name('home');
 //Route Utilisateurs
 Route::resource('/users', 'UserController');
 
+/* Cart Routes */
+Route::post('panier/ajouter', 'CartController@store')->name('cart.store');
+
 
 

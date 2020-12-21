@@ -227,6 +227,12 @@
             </nav>
         </div>
     </div>
+    @if (session('sucess'))
+        <div class="alert alert-sucess">
+            {{ session('successs') }}
+        </div>
+    @endif
+
 
     <main class="container">
         <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
@@ -244,21 +250,25 @@
                     <div
                         class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                         <div class="col p-4 d-flex flex-column position-static">
-                   
-                            <h3 class="mb-0">{{$match->nom}} </h3>
-                            <div class="mb-1 text-muted">{{$match->created_at->format('d/m/Y')}} </div>
-                            <p class="lead my-3"> {{$match->equipe}} gagnant: </p>
-                            <button class="btn btn-info"> {{$match->cote}} </button>
-                            <form action="#" method="POST">
+
+                            <h3 class="mb-0">{{ $match->nom }} </h3>
+                            <div class="mb-1 text-muted">{{ $match->created_at->format('d/m/Y') }} </div>
+                            <p class="lead my-3"> {{ $match->equipe }} gagnant: </p>
+                            <button class="btn btn-info"> {{ $match->cote }} </button>
+                            <form action=" {{ route('cart.store') }} " method="POST">
+                                @csrf
+                                <input type="hidden" name="id" value=" {{ $match->id }} ">
+                                <input type="hidden" name="nom" value=" {{ $match->nom }} ">
+                                <input type="hidden" name="cote" value=" {{ $match->cote }} ">
                                 <button type="submit" class="btn btn-danger"> Miser</button>
                             </form>
-                                
-                           
-                            <a href=" {{route('matchs.show', $match->id)}} " class="stretched-link">En savoir plus</a>
+
+
+                            <a href=" {{ route('matchs.show', $match->id) }} " class="stretched-link">En savoir plus</a>
                         </div>
                         <div class="col-auto d-none d-lg-block">
-                            <img src=" {{ $match->image}} " alt >
-                          
+                            <img src=" {{ $match->image }} " alt>
+
                         </div>
                     </div>
                 </div>
@@ -267,9 +277,9 @@
         </div>
         </div>
 
-        
-        
-        {{$matchs->links()}}
+
+
+        {{ $matchs->links() }}
 
     </main><!-- /.container -->
 
@@ -302,7 +312,7 @@
         <th>créé le</th>
         @foreach ($matchs as $match)
             <tr>
-                <td><a href=" {{route('matchs.show', $match->id)}}">{{ $match->nom }}</a></td>
+                <td><a href=" {{ route('matchs.show', $match->id) }}">{{ $match->nom }}</a></td>
                 <td>{{ $match->cote }}</td>
                 <td>{{ $match->equipe }}</td>
                 <td>{{ $match->created_at }}</td>
