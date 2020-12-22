@@ -15,7 +15,7 @@
                     @endif
 
                     {{ __('Vous êtes à présent connecté') }}
-                    <button> <a href="http://projet-laravel-paris-sportif.test/matchs/create">Créer un match</a></button>
+                    <button> <a href="{{route('matchs.create')}}">Créer un match</a></button>
                     <button><a href="http://projet-laravel-paris-sportif.test/matchs">Liste des matchs</a></button>
 
                 </div>

@@ -36,10 +36,20 @@ class MatchController extends Controller
         $request=request()->validate([
             'nom'=>'required',
             'cote'=>'required',
-            'equipe'=>'required'
+            'equipe'=>'required',
+            'image'=>'required'
         ]);
-        Match::create($request);
-        return redirect()->route('matchs.index');
+        
+        $imagePaf = request('image')->store('uploads', 'public');
+
+        $match=Match::create([
+            'nom'=> $request['nom'],
+            'cote'=> $request['cote'],
+            'equipe'=> $request['equipe'],
+            'image'=> $imagePaf
+        ]);
+
+        return redirect()->route('matchs.index', compact('match'));
     }
 
   

@@ -207,7 +207,7 @@
 
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-between">
-                <a class="p-2 link-secondary" href="#">Accueil</a>
+                <a class="p-2 link-secondary" href="{{route('boutique.index')}}">Accueil</a>
                 <a class="p-2 link-secondary" href="#">Mon Profil</a>
                 <a class="p-2 link-secondary" href="#">Mon Panier</a>
                
@@ -238,6 +238,8 @@
 
                             <h3 class="mb-0">{{ $match->nom }} </h3>
                             <div class="mb-1 text-muted">{{ $match->created_at->format('d/m/Y') }} </div>
+                            <img src="{{ asset('storage') . '/' . $match->image }}" 
+                            style="width: 65px; height: 65px">
                             <p class="lead my-3"> {{ $match->equipe }} gagnant: </p>
                             <button class="btn btn-info"> {{ $match->cote }} </button>
                             <form action=" {{ route('cart.store') }} " method="POST">
@@ -295,17 +297,21 @@
         <th>cote</th>
         <th>equipe</th>
         <th>créé le</th>
+        <th>image</th>
         @foreach ($matchs as $match)
             <tr>
                 <td><a href=" {{ route('matchs.show', $match->id) }}">{{ $match->nom }}</a></td>
                 <td>{{ $match->cote }}</td>
                 <td>{{ $match->equipe }}</td>
                 <td>{{ $match->created_at }}</td>
+                <td><img src="{{ asset('storage') . '/' . $match->image }}" 
+                style="width: 65px; height: 65px"></td>
             </tr>
         @endforeach
     </table>
 
-    <button> <a href="http://projet-laravel-paris-sportif.test/home">Retour à l'accueil</a></button>
+    <button> <a href="{{route('matchs.index')}}">Retour à l'accueil</a></button>
+    <button> <a href="{{route('matchs.create')}}">Créer un macth</a></button>
 
 
 @endsection
